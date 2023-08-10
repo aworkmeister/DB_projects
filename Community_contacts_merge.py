@@ -13,8 +13,9 @@ serviceurl = 'https://redcap.vanderbilt.edu/api/'
 
 if __name__ == '__main__':
     # get data from old DB 
-    old_data = old_database.export_records()
-    old_data
+    old_data_initial = old_database.export_records()
+    #remove partner=2
+    old_data = [i for i in old_data_initial if i['partner'] != '2']
     
     #Make dictionary for each contact
     onecontact=[i for i in old_data if i['contact']=='1']
@@ -25,7 +26,7 @@ if __name__ == '__main__':
     sixcontact=[i for i in old_data if i['contact6']=='1']
     sevencontact=[i for i in old_data if i['contact7']=='1']
     eightcontact=[i for i in old_data if i['contact8']=='1']
-
+    
     # Build dictionary to upload to new database for each record
     upload_new=[]
     for item in old_data:
@@ -34,7 +35,7 @@ if __name__ == '__main__':
         print("Syncing static record {to_sync}".format(to_sync=to_sync))
         # static fields: 
         info_static['record_id'] = item['record_id']
-        # info_static['partner'] = item['partner'] choices changes
+        info_static['partner'] = item['partner']
         info_static['organization_affiliation'] = item['organization_affiliation'] 
         info_static['job_title_position'] = item['job_title_position']
         info_static['partner_other'] = item['partner_other']
@@ -48,8 +49,7 @@ if __name__ == '__main__':
         info_static['email'] = item['email']
         info_static['newsletter'] = item['newsletter']
         info_static['phone_primary'] = item['phone']
-        #info_static['status'] = ????
-        #info_static['outreach_community_relations_tracking_complete'] = ????
+        info_static['outreach_community_relations_tracking_complete'] = 1
         upload_new.append(info_static)
     
     # repeating fields: create new instance of study referral
@@ -61,6 +61,9 @@ if __name__ == '__main__':
         info['redcap_repeat_instance'] = '1'
         info['redcap_repeat_instrument'] = 'touch_point'
         info['tp_date'] = item['date']
+        info['tp_purpose'] = 'building'
+        info['tp_type'] = 'outbound'
+        info['tp_result'] = 'comp'
         info['tp_user'] = item['team']
         info['tp_notes'] = item['notes']
         info['touch_point_complete'] = '2'
@@ -73,6 +76,9 @@ if __name__ == '__main__':
         info['redcap_repeat_instance'] = '2'
         info['redcap_repeat_instrument'] = 'touch_point'
         info['tp_date'] = item['date2']
+        info['tp_purpose'] = 'building'
+        info['tp_type'] = 'outbound'
+        info['tp_result'] = 'comp'
         info['tp_user'] = item['team2']
         info['tp_notes'] = item['notes2']
         info['touch_point_complete'] = '2'
@@ -85,6 +91,9 @@ if __name__ == '__main__':
         info['redcap_repeat_instance'] = '3'
         info['redcap_repeat_instrument'] = 'touch_point'
         info['tp_date'] = item['date3']
+        info['tp_purpose'] = 'building'
+        info['tp_type'] = 'outbound'
+        info['tp_result'] = 'comp'
         info['tp_user'] = item['team3']
         info['tp_notes'] = item['notes3']
         info['touch_point_complete'] = '2'
@@ -97,6 +106,9 @@ if __name__ == '__main__':
         info['redcap_repeat_instance'] = '4'
         info['redcap_repeat_instrument'] = 'touch_point'
         info['tp_date'] = item['date4']
+        info['tp_purpose'] = 'building'
+        info['tp_type'] = 'outbound'
+        info['tp_result'] = 'comp'
         info['tp_user'] = item['team4']
         info['tp_notes'] = item['notes4']
         info['touch_point_complete'] = '2'
@@ -109,6 +121,9 @@ if __name__ == '__main__':
         info['redcap_repeat_instance'] = '5'
         info['redcap_repeat_instrument'] = 'touch_point'
         info['tp_date'] = item['date5']
+        info['tp_purpose'] = 'building'
+        info['tp_type'] = 'outbound'
+        info['tp_result'] = 'comp'
         info['tp_user'] = item['team5']
         info['tp_notes'] = item['notes5']
         info['touch_point_complete'] = '2'
@@ -121,6 +136,9 @@ if __name__ == '__main__':
         info['redcap_repeat_instance'] = '6'
         info['redcap_repeat_instrument'] = 'touch_point'
         info['tp_date'] = item['date6']
+        info['tp_purpose'] = 'building'
+        info['tp_type'] = 'outbound'
+        info['tp_result'] = 'comp'
         info['tp_user'] = item['team6']
         info['tp_notes'] = item['notes6']
         info['touch_point_complete'] = '2'
@@ -133,6 +151,9 @@ if __name__ == '__main__':
         info['redcap_repeat_instance'] = '7'
         info['redcap_repeat_instrument'] = 'touch_point'
         info['tp_date'] = item['date7']
+        info['tp_purpose'] = 'building'
+        info['tp_type'] = 'outbound'
+        info['tp_result'] = 'comp'
         info['tp_user'] = item['team7']
         info['tp_notes'] = item['notes7']
         info['touch_point_complete'] = '2'
