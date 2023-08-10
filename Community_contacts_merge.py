@@ -12,12 +12,21 @@ serviceurl = 'https://redcap.vanderbilt.edu/api/'
 #new_database = Project(serviceurl, os.environ['DEV_OUTREACH_COMMUNITY_CONTACTS_TRACKING'])
 
 if __name__ == '__main__':
-    # get data from old DB 
+    # get all records from old DB 
     old_data_initial = old_database.export_records()
-    #remove partner=2
+    
+    #make list of each record where partner=2 and print so they can be reviewed because partner variables changed in new db
+    partner2= [i for i in old_data_initial if i['partner'] == '2']
+    lis_partner_2= []
+    for item in partner2:
+        id_partner=item['record_id']
+        lis_partner_2.append(id_partner)
+    print('Record ids where partner = 2 : ',lis_partner_2)
+    
+    #make list without partner=2 (partner variables changed in new db
     old_data = [i for i in old_data_initial if i['partner'] != '2']
     
-    #Make dictionary for each contact
+    #Make a list of records for each number of contacts
     onecontact=[i for i in old_data if i['contact']=='1']
     twocontact=[i for i in old_data if i['contact2']=='1']
     threecontact=[i for i in old_data if i['contact3']=='1']
@@ -27,7 +36,7 @@ if __name__ == '__main__':
     sevencontact=[i for i in old_data if i['contact7']=='1']
     eightcontact=[i for i in old_data if i['contact8']=='1']
     
-    # Build dictionary to upload to new database for each record
+    # Build list of all static records to upload to new database 
     upload_new=[]
     for item in old_data:
         info_static = {}
@@ -52,7 +61,7 @@ if __name__ == '__main__':
         info_static['outreach_community_relations_tracking_complete'] = 1
         upload_new.append(info_static)
     
-    # repeating fields: create new instance of study referral
+    # repeating fields: create new instance of study referral based on contact number 
     for item in onecontact:
         info={}
         to_sync = item['record_id']
