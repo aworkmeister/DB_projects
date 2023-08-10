@@ -73,7 +73,10 @@ if __name__ == '__main__':
         info['tp_purpose'] = 'building'
         info['tp_type'] = 'outbound'
         info['tp_result'] = 'comp'
-        info['tp_user'] = item['team']
+        if item['team'] == '10':
+            info['tp_user'] = '0'
+        else:
+            info['tp_user'] = item['team']
         info['tp_notes'] = item['notes']
         info['touch_point_complete'] = '2'
         upload_new.append(info)
@@ -88,7 +91,10 @@ if __name__ == '__main__':
         info['tp_purpose'] = 'building'
         info['tp_type'] = 'outbound'
         info['tp_result'] = 'comp'
-        info['tp_user'] = item['team2']
+        if item['team2'] == '10':
+            info['tp_user'] = '0'
+        else:
+            info['tp_user'] = item['team2']
         info['tp_notes'] = item['notes2']
         info['touch_point_complete'] = '2'
         upload_new.append(info)
@@ -103,7 +109,10 @@ if __name__ == '__main__':
         info['tp_purpose'] = 'building'
         info['tp_type'] = 'outbound'
         info['tp_result'] = 'comp'
-        info['tp_user'] = item['team3']
+        if item['team3'] == '10':
+            info['tp_user'] = '0'
+        else:
+            info['tp_user'] = item['team3']
         info['tp_notes'] = item['notes3']
         info['touch_point_complete'] = '2'
         upload_new.append(info)
@@ -118,7 +127,10 @@ if __name__ == '__main__':
         info['tp_purpose'] = 'building'
         info['tp_type'] = 'outbound'
         info['tp_result'] = 'comp'
-        info['tp_user'] = item['team4']
+        if item['team4'] == '10':
+            info['tp_user'] = '0'
+        else:
+            info['tp_user'] = item['team4']
         info['tp_notes'] = item['notes4']
         info['touch_point_complete'] = '2'
         upload_new.append(info) 
@@ -133,7 +145,10 @@ if __name__ == '__main__':
         info['tp_purpose'] = 'building'
         info['tp_type'] = 'outbound'
         info['tp_result'] = 'comp'
-        info['tp_user'] = item['team5']
+        if item['team5'] == '10':
+            info['tp_user'] = '0'
+        else:
+            info['tp_user'] = item['team5']
         info['tp_notes'] = item['notes5']
         info['touch_point_complete'] = '2'
         upload_new.append(info)
@@ -148,7 +163,10 @@ if __name__ == '__main__':
         info['tp_purpose'] = 'building'
         info['tp_type'] = 'outbound'
         info['tp_result'] = 'comp'
-        info['tp_user'] = item['team6']
+        if item['team6'] == '10':
+            info['tp_user'] = '0'
+        else:
+            info['tp_user'] = item['team6']
         info['tp_notes'] = item['notes6']
         info['touch_point_complete'] = '2'
         upload_new.append(info)
@@ -163,7 +181,10 @@ if __name__ == '__main__':
         info['tp_purpose'] = 'building'
         info['tp_type'] = 'outbound'
         info['tp_result'] = 'comp'
-        info['tp_user'] = item['team7']
+        if item['team7'] == '10':
+            info['tp_user'] = '0'
+        else:
+            info['tp_user'] = item['team7']
         info['tp_notes'] = item['notes7']
         info['touch_point_complete'] = '2'
         upload_new.append(info) 
