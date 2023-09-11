@@ -19,11 +19,8 @@ from redcap import Project
 
 serviceURL = 'https://redcap.vanderbilt.edu/api/'
 #map_tracking = Project(serviceURL, os.environ['VMAP_PARTICIPANT_TRACKING'])
-map_tracking = Project(serviceURL, '968F3CA76434A1846FECBA2321A34EAE')
 #edc = Project(serviceURL, os.environ['VMAP_ELECTRONIC_DATA_CAPTURE'])
-edc = Project(serviceURL, '09B0A6B7F207F51C6F656BAE567FA390')
 #elig_edc = Project(serviceURL, os.environ['VMAP_ELIGIBILITY_EDC'])
-elig_edc = Project(serviceURL, 'BFEF4C303E170DDAA850D56C4FB9594A')
 
 # REDCAP REGISTRY REPORT: VMAP 2.0 Eligibility Visits Scheduled
 eligibility_scheduled_report = map_tracking.export_report(report_id='360321', format_type='json', raw_or_label='raw',
