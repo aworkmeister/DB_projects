@@ -45,7 +45,7 @@ def download_ptd():
     #get repeating ptd info
     repeat_ptd= map_tracking.export_records(fields=['visit1_date','vmac_id'], events=['enrollmentbaseline_arm_1'])
     #get first instance of repeating scheduling info
-    first_repeat_ptd= [i for i in repeat_ptd if i['redcap_repeat_instance']== '1']
+    first_repeat_ptd= [i for i in repeat_ptd if i['redcap_repeat_instance']== 1]
     #get static ptd info
     static_ptd = map_tracking.export_records(fields=['map_id', 'dob', 'race', 'sex', 'scd_status', 'vmac_id'], events=['enrollmentbaseline_arm_1'])
     #convert to df and merge
