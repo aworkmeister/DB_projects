@@ -165,11 +165,17 @@ def update_race_table(wb, sheet, date, race_dictionary, row_num):
     """
     x = 3
     for item in race_dictionary.values():
-        sheet.cell(row=row_num, column=x).value = str(item)
+        if sheet.cell(row=row_num, column=x).value is None:
+            sheet.cell(row=row_num, column=x).value = str(item)
+        else:
+            sheet.cell(row=row_num, column=x).value = str(sheet.cell(row=row_num, column=x).value) + '/' + str(item)
         sheet.cell(row=row_num, column=x).alignment = Alignment(horizontal='center')
         x = x + 1
-    total_race = sum(race_dictionary.values())
-    sheet.cell(row=row_num, column=21).value = total_race
+    total_num = sum(race_dictionary.values())
+    if sheet.cell(row=row_num, column=21).value is None:
+        sheet.cell(row=row_num, column=21).value = total_num
+    else:
+        sheet.cell(row=row_num, column=21).value = str(sheet.cell(row=row_num, column=21).value) + '/' + str(total_num)
     #wb.save('C:/Users/pechmakr/OneDrive - VUMC/VMAP 2.0 Recruitment/VMAP_Cohort_Breakdown/VMAP_Cohort_Sex_Age_Breakdown_' + date + '.xlsx')
     wb.save('/Users/workmeaw/Desktop/VMAP_Enrollment_Breakdown/VMAP_Cohort_Sex_Age_Breakdown_' + date + '.xlsx')
 
