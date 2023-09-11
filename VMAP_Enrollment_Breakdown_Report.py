@@ -58,6 +58,9 @@ def download_ptd():
     #select for only vmap 2.0
     ptd_map20 = [item for item in all_ptd if item['map_id'] >= '338']
     return ptd_map20
+    for dicts in ptd_map20:
+    for keys in dicts:
+        dicts[keys] = str(dicts[keys])
 
 def age_sex_breakdowns(dataset, visit_type_date):
     """
